@@ -39,8 +39,8 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         Contact contact = new Contact("Catch", "https://redhat.com", "catch@redhat.com");
         return new ApiInfoBuilder()
-                .title("Spring Boot Restful Webservice Demo")
-                .description("Spring Boot Restful Webservice Demo")
+                .title("Spring Boot Restful Webservice")
+                .description("Spring Boot Restful Webservice ")
                 .version("0.0.1")
                 .license("Apache 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0")

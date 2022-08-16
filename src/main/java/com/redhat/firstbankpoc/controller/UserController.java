@@ -1,26 +1,47 @@
 package com.redhat.firstbankpoc.controller;
 
-import com.redhat.firstbankpoc.entity.User;
-import com.redhat.firstbankpoc.usecase.UserService;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Optional;
+import com.redhat.firstbankpoc.entity.User;
+import com.redhat.firstbankpoc.usecase.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService;
-
+    
+    
+//    private final Tracer tracer = Tracing.init("dao-jpa-backend");
+    
+    
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<User> getAllUsers() {
-        return this.userService.getAllUsers();
+
+    	
+// 	   Span span =  Tracing.startServerSpan(tracer, (HttpHeaders) headers, "format");
+//       try (Scope scope = tracer.scopeManager().activate(span)) {
+           String helloStr = String.format("Hello, %s!", "getAllUsers");
+//           span.log(ImmutableMap.of("event", "string-format", "value", helloStr));
+           return  this.userService.getAllUsers();
+//       } finally {
+//           span.finish();
+//       }
+       
     }
 
 
